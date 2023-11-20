@@ -1,9 +1,12 @@
 import { AppRequest } from '../models';
+import {BadRequestException} from "@nestjs/common";
 
 /**
  * @param {AppRequest} request
  * @returns {string}
  */
 export function getUserIdFromRequest(request: AppRequest): string {
-  return request.user && request.user.id;
+  if (typeof request.query.userId === 'string')
+    return request.query && request.query.userId;
+  throw new BadRequestException('User id is not valid');
 }

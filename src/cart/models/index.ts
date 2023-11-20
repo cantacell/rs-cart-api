@@ -1,3 +1,5 @@
+import {User} from "../../users";
+
 export type Product = {
   id: string,
   title: string,
@@ -14,4 +16,5 @@ export type CartItem = {
 export type Cart = {
   id: string,
   items: CartItem[],
+  userId: User
 }
